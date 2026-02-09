@@ -1,3 +1,6 @@
+[![Python](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub stars](https://img.shields.io/github/stars/zumuvik/updater-hosts?style=social)](https://github.com/zumuvik/updater-hosts)
 # 🌐 Генератор файла hosts для обхода блокировок
 
 Скрипт для автоматической генерации файла `hosts` из списка доменов. Определяет IP-адреса доменов и создает готовый файл для добавления в системный файл hosts.
