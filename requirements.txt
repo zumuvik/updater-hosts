@@ -1,0 +1,4 @@
+# Optional but recommended dependencies
+dnspython>=2.3.0
+tqdm>=4.0.0
+
