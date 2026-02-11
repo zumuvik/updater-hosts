@@ -92,7 +92,7 @@ sudo cat hosts >> /etc/hosts
 
 MIT — см. файл `LICENSE`.
 
-## Контрибьюция
+## Вклад 
 
 PR и issue приветствуются. Начните с fork → branch → PR.
 
