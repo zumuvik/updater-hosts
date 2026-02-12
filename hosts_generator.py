@@ -278,6 +278,11 @@ def resolve_domain_wrapper(args: Tuple[str, int, int, dict, Lock]) -> Tuple[str,
     # Сначала пробуем стандартный резолв
     ip = resolve_domain(domain, timeout)
     
+    # Если получилось, добавляем в словарь успешных доменов
+    if ip:
+        with successful_lock:
+            successful_domains[domain] = ip
+    
     # Если не получилось и включен поиск похожих, пробуем найти похожий домен
     if not ip:
         # Блокируем доступ к словарю для чтения
@@ -351,9 +356,11 @@ def resolve_domains(domains: List[str], timeout: int = 3, max_workers: int = 50,
     # Словарь успешных доменов для поиска похожих (обновляется по мере обработки)
     successful_domains = {}
     
+    # Создаём lock для безопасного доступа к successful_domains
+    successful_lock = Lock()
+    
     # Подготавливаем аргументы с индексами для сохранения порядка
-    # Для первой итерации используем пустой словарь, потом обновим
-    domain_args = [(domain, timeout, i, successful_domains) for i, domain in enumerate(domains)]
+    domain_args = [(domain, timeout, i, successful_domains, successful_lock) for i, domain in enumerate(domains)]
     
     # Создаем словарь для результатов с индексами
     results_dict = {}
